@@ -8,6 +8,7 @@ use App\Http\Controllers\storyController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\pegununganController;
+use App\Http\Controllers\info_setController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,6 +42,8 @@ Route::get('/logout', function () {
 //Admin Route
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
+    //user
+
     Route::get('/home_admin', [HomeController::class, 'admin_home'])->name('admin.home');
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
@@ -52,7 +55,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
     Route::get('/user_setting_delete/{id}', [userController::class, 'destroy'])->name('user_setting_delete');
 
-    //Route::resource('pegunungan', PegununganController::class);
+    //Route::resource('pegunungan', PegununganController::class); pegunungan
 
     Route::get('/pegunungan_setting', [pegununganController::class, 'index'])->name('pegunungan_setting');
     Route::get('/pegunungan_setting', [pegununganController::class, 'lihatPegunungan'])->name('pegunungan_setting');
@@ -64,4 +67,17 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::post('/pegunungan_setting_edit_action/{id_gunung}', [pegununganController::class, 'update'])->name('pegunungan_setting_edit_action');
 
     Route::get('/pegunungan_setting_delete/{id_gunung}', [pegununganController::class, 'destroy'])->name('pegunungan_setting_delete');
+
+    //info
+    
+    Route::get('/info_setting', [info_setController::class, 'index'])->name('info_setting');
+    Route::get('/info_setting', [info_setController::class, 'lihatInfo'])->name('info_setting');
+
+    Route::get('/info_setting_insert', [info_setController::class, 'insertInfo'])->name('info_setting_insert');
+    Route::post('/info_setting_insert_action', [info_setController::class, 'store'])->name('info_setting_insert_action');
+
+    Route::get('/info_setting_edit/{id_info}', [info_setController::class, 'edit'])->name('info_setting_edit');
+    Route::post('/info_setting_edit_action/{id_info}', [info_setController::class, 'update'])->name('info_setting_edit_action');
+
+    Route::get('/info_setting_delete/{id_info}', [info_setController::class, 'destroy'])->name('info_setting_delete');
 });

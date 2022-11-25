@@ -64,7 +64,7 @@
                                  <a href="{{ route('info') }}">Story</a>
                               </li>
                               <li>
-                                 <a href="{{ route('info') }}">Info</a>
+                                 <a href="{{ route('info_setting') }}">Info</a>
                               </li>
                               @guest
                                  @if (Route::has('login'))

@@ -13,15 +13,15 @@
       <meta name="description" content="">
       <meta name="author" content="">
       <!-- bootstrap css -->
-      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="../css/bootstrap.min.css">
       <!-- style css -->
-      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="../css/style.css">
       <!-- Responsive-->
-      <link rel="stylesheet" href="css/responsive.css">
+      <link rel="stylesheet" href="../css/responsive.css">
       <!-- fevicon -->
-      <link rel="icon" href="images/fevicon.png" type="image/gif" />
+      <link rel="icon" href="../images/fevicon.png" type="image/gif" />
       <!-- Scrollbar Custom CSS -->
-      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css">
       <!-- Tweaks for older IEs-->
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -31,7 +31,7 @@
    <body class="main-layout">
       <!-- loader  -->
       <div class="loader_bg">
-         <div class="loader"><img src="images/loading.gif" alt="" /></div>
+         <div class="loader"><img src="../images/loading.gif" alt="" /></div>
       </div>
       <!-- end loader -->
       <!-- header -->
@@ -42,7 +42,7 @@
                <div class="col-lg-3 logo_section">
                   <div class="full">
                      <div class="center-desk">
-                        <div class="logo"> <a href="index.html"><img src="images/myhiking/logo22.png" alt="#"></a> </div>
+                        <div class="logo"> <a href="index.html"><img src="../images/myhiking/logo22.png" alt="#"></a> </div>
                      </div>
                   </div>
                </div>
@@ -58,10 +58,10 @@
                                  <a href="{{ route('user_setting') }}">User</a>
                               </li>
                               <li>
-                                 <a href="{{ route('story') }}">Pegunungan</a>
+                                 <a href="{{ route('pegunungan_setting') }}">Pegunungan</a>
                               </li>
                               <li>
-                                 <a href="{{ route('info_setting') }}">Story</a>
+                                 <a href="{{ route('info') }}">Story</a>
                               </li>
                               <li>
                                 <a href="{{ route('info') }}">Info</a>
@@ -98,59 +98,78 @@
         </header>
       <!-- end section -->
       <!-- section --> 
-      
       <div class="section layout_padding">
-        <div class="container">
-           <div class="row">
-              <div class="col-md-12">
-               <br>
-                 <div class="heading">
-                    <div class="row mb-0">
-                        <div class="col-md-8 offset-md">
-                            <a  class="btn btn-primary" href="{{ route('info_setting_insert') }}">
-                                {{ __('TAMBAH') }}
-                            </a>
-                          </div>
-                       </div>
-                       <br>
-                    <table class="table table-striped">
-                        <thead class="thead-dark" style="font-weight:bold">
-                        <tr>
-                           <td>No</td>
-                            <td>Pertanyaan</td>
-                            <td>Jawaban</td>
-                        </tr>
-                        </thead>
-                        @foreach ($info as $infofaq)
-                        <tr>
-                           <td>{{ $infofaq->id_info }}</td>
-                            <td>{{ $infofaq->pertanyaan }}</td>
-                            <td>{{ $infofaq->jawaban }}</td>
-                            <td>
-                                <a href="{{ url('/info_setting_edit/' . $infofaq->id_info) }}" class="btn btn-warning">Edit</a>
-                            </td>
-                            <td>
-                                <a href="{{ url('/info_setting_delete/' . $infofaq->id_info) }}" class="btn btn-danger">Hapus</a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </table>
-                 </div>
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                <br>
+                  <div class="heading">
+        <form method="POST" action="{{ route('info_setting_insert_action') }}" enctype="multipart/form-data">
+        @csrf
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="heading">
+                     <h4>Insert Data <span class="orange_color">Frequently Ask Question</span></h4>
+                  </div>
+               </div>
+            </div>
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row mb-3">
+                    <label for="pertanyaan" class="col-md-4 col-form-label text-md-end">{{ __('Pertanyaan') }}</label>
+
+                    <div class="col-md-6">
+                        <textarea id="pertanyaan" type="text" placeholder ="pertanyaan" class="form-control @error('pertanyaan') is-invalid @enderror" name="pertanyaan" value="" required autocomplete="pertanyaan" autofocus></textarea>
+
+                        @error('pertanyaan')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="jawaban" class="col-md-4 col-form-label text-md-end">{{ __('Jawaban') }}</label>
+
+                    <div class="col-md-6">
+                        <textarea id="jawaban" type="jawaban" placeholder ="jawaban" class="form-control @error('jawaban') is-invalid @enderror" name="jawaban" value="" required autocomplete="jawaban" autofocus></textarea>
+
+                        @error('jawaban')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                
+                <div class="row mb-0">
+                  <div class="col-md-8 offset-md-4">
+                      <button type="submit" class="btn btn-primary">
+                          {{ __('SIMPAN') }}
+                      </button>
+                  </div>
               </div>
-           </div>
+            </div>
         </div>
-     </div>
+      </form>
+      </div>
+   </div>
+</div>
+</div>
+</div>
       <!-- end section -->
       <!-- footer -->
       <footer>
          <div class="container">
             <div class="row">
                <div class="col-lg-4 col-md-6">
-                  <a href="#"><img src="images/footer_logo.png" alt="#" /></a>
+                  <a href="#"><img src="../images/footer_logo.png" alt="#" /></a>
                   <ul class="contact_information">
-                     <li><span><img src="images/location_icon.png" alt="#" /></span><span class="text_cont">London 145<br>United Kingdom</span></li>
-                     <li><span><img src="images/phone_icon.png" alt="#" /></span><span class="text_cont">987 654 3210<br>987 654 3210</span></li>
-                     <li><span><img src="images/mail_icon.png" alt="#" /></span><span class="text_cont">demo@gmail.com<br>support@gmail.com</span></li>
+                     <li><span><img src="../images/location_icon.png" alt="#" /></span><span class="text_cont">London 145<br>United Kingdom</span></li>
+                     <li><span><img src="../images/phone_icon.png" alt="#" /></span><span class="text_cont">987 654 3210<br>987 654 3210</span></li>
+                     <li><span><img src="../images/mail_icon.png" alt="#" /></span><span class="text_cont">demo@gmail.com<br>support@gmail.com</span></li>
                   </ul>
                   <ul class="social_icon">
                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -177,10 +196,10 @@
                   <div class="footer_links">
                      <h3>Instagram</h3>
                      <ol>
-                        <li><img class="img-responsive" src="images/footer_blog.png" alt="#" /></li>
-                        <li><img class="img-responsive" src="images/footer_blog.png" alt="#" /></li>
-                        <li><img class="img-responsive" src="images/footer_blog.png" alt="#" /></li>
-                        <li><img class="img-responsive" src="images/footer_blog.png" alt="#" /></li>
+                        <li><img class="img-responsive" src="../images/footer_blog.png" alt="#" /></li>
+                        <li><img class="img-responsive" src="../images/footer_blog.png" alt="#" /></li>
+                        <li><img class="img-responsive" src="../images/footer_blog.png" alt="#" /></li>
+                        <li><img class="img-responsive" src="../images/footer_blog.png" alt="#" /></li>
                      </ol>
                   </div>
                </div>
@@ -224,13 +243,13 @@
       </div>
       <!-- end footer -->
       <!-- Javascript files-->
-      <script src="js/jquery.min.js"></script>
-      <script src="js/popper.min.js"></script>
-      <script src="js/bootstrap.bundle.min.js"></script>
-      <script src="js/jquery-3.0.0.min.js"></script>
-      <script src="js/plugin.js"></script>
+      <script src="../js/jquery.min.js"></script>
+      <script src="../js/popper.min.js"></script>
+      <script src="../js/bootstrap.bundle.min.js"></script>
+      <script src="../js/jquery-3.0.0.min.js"></script>
+      <script src="../js/plugin.js"></script>
       <!-- Scrollbar Js Files -->
-      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-      <script src="js/custom.js"></script>
+      <script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="../js/custom.js"></script>
    </body>
 </html>
