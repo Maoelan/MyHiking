@@ -96,20 +96,23 @@
       <!-- end header -->
       <!-- revolution slider -->
 
-      <div class="row mb-0">
+     <!-- <div class="row mb-0">
          <div class="col-md-8 offset-md">
              <a  class="btn btn-primary" href="{{ route('story_insert') }}">
                  {{ __('TAMBAH') }}
              </a>
            </div>
-        </div>
+        </div>-->
 
 <div class="Blog-bg">
    <div class="container">
       <div class="row">
          <div class="col-md-12">
             <div class="Blogheading">
-               <h3>Blog </h3>
+               <h3>Story</h3>
+               <a  class="btn btn-primary" href="{{ route('story_insert') }}">
+                  {{ __('TAMBAH') }}
+              </a>
             </div>
          </div>
       </div>
@@ -117,7 +120,7 @@
 </div>
 
 
-
+      @foreach ($story as $postory)
       <!-- section --> 
       <div class="section layout_padding blog_blue_bg light_silver">
          <div class="container">
@@ -126,12 +129,13 @@
                <div class="col-md-8 offset-md-2">
                   <div class="full">
                      <div class="big_blog">
-                        <img class="img-responsive" src="images/blog_1.png" alt="#" />
+                        <img class="img-responsive rounded mx-auto d-block" src="/images/{{ $postory->foto_story }}" alt="#" />
                      </div>
                      <div class="blog_cont_2">
-                        <h3>Why do we use it</h3>
-                        <p class="sublittle">March 19 2019  5 READ</p>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters as opposed to using Content here content here making..</p>
+                        <h3>{{ $postory->judul_story }}</h3>
+                        <p class="sublittle">{{ $postory->tanggal_post }}</p>
+                        <p class="sublittle">Nama : {{ $postory->nama }}</p>
+                        <p>{{ $postory->post_story }}</p>
                      </div>
                   </div>
                </div>
@@ -139,6 +143,7 @@
          </div>
       </div>
       <!-- end section -->
+      @endforeach
 
 <!-- section -->
       <section class="layout_padding">

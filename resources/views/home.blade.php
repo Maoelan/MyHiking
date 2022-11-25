@@ -55,7 +55,7 @@
                                  <a href="{{ route('home') }}">Beranda</a>
                               </li>
                               <li>
-                                 <a href="{{ route('pegunungan_bukit') }}">Pegunungan & Bukit</a>
+                                 <a href="{{ route('pegunungan_bukit') }}">Pegunungan</a>
                               </li>
                               <li>
                                  <a href="{{ route('story') }}">Cerita Komunitas</a>
