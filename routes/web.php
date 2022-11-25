@@ -7,6 +7,7 @@ use App\Http\Controllers\pegunungan_bukitController;
 use App\Http\Controllers\storyController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\pegununganController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,4 +51,16 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::post('/user_setting_edit_action/{id}', [userController::class, 'updateUser'])->name('user_setting_edit_action');
 
     Route::get('/user_setting_delete/{id}', [userController::class, 'destroy'])->name('user_setting_delete');
+
+    //Route::resource('pegunungan', PegununganController::class);
+
+    Route::get('/pegunungan_setting', [pegununganController::class, 'index'])->name('pegunungan_setting');
+    Route::get('/pegunungan_setting', [pegununganController::class, 'lihatPegunungan'])->name('pegunungan_setting');
+
+    Route::Post('/pegunungan_setting_insert', [pegununganController::class, 'store'])->name('pegunungan_setting_insert');
+
+    Route::get('/pegunungan_setting_edit/{id}', [pegununganController::class, 'edit'])->name('pegunungan_setting_edit');
+    Route::post('/pegunungan_setting_action/{id}', [pegununganController::class, 'update'])->name('pegunungan_setting_edit_action');
+
+    Route::get('/pegunungan_setting_delete/{id}', [pegununganController::class, 'destroy'])->name('pegunungan_setting_delete');
 });
