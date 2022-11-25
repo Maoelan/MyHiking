@@ -103,10 +103,10 @@
                      <!-- The slideshow -->
                      <div class="carousel-inner">
                         <div class="carousel-item active">
-                           <img src="images/slider_1.png" alt="#" />
+                           <img src="images/slider1.jpg" alt="#" />
                         </div>
                         <div class="carousel-item">
-                           <img src="images/slider_1.png" alt="#" />
+                           <img src="images/slider2.jpg" alt="#" />
                         </div>
                      </div>
                      <!-- Left and right controls -->
@@ -120,12 +120,13 @@
                </div>
                <div class="col-md-5">
                   <div class="full slider_cont_section">
-                     <h4>More Featured in</h4>
-                     <h3>Jack Blogger</h3>
-                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
+                     <h4>MENDAKI JADI LEBIH MENYENANGKAN</h4>
+                     <div class="mb-3"></div>
+                     <h3>MYHIKING</h3>
+                     <p>Membantu anda untuk masalah hiking dengan infomasi pegunungan dan cerita komunitas</p>
                      <div class="button_section">
-                        <a href="about.html">Read More</a>
-                        <a href="contact.html">Contact Us</a>
+                        <a href="{{ route('pegunungan') }}">Pegunungan</a>
+                        <a href="{{ route('story') }}">Story</a>
                      </div>
                   </div>
                </div>
