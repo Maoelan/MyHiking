@@ -105,6 +105,26 @@
       </div>
    </div>
 </div>
+
+<div class="section layout_padding">
+<div class="container">
+   @foreach ($info as $infofaq)
+<div class="list-group w-100">
+   <a href="#shortExampleAnswer1collapse" data-mdb-toggle="collapse" aria-expanded="false"
+     aria-controls="shortExampleAnswer1collapse" class="list-group-item list-group-item-action">
+     <div class="d-flex w-100 justify-content-between">
+       <h5 class="mb-1">{{ $infofaq->pertanyaan }}</h5>
+     </div>
+     <p class="mb-1">
+      {{ $infofaq->jawaban }}
+     </p>
+   </a>
+</div>
+@endforeach
+</div>
+</div>
+
+
 <footer>
    <div class="container">
       <div class="row">
