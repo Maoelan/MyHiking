@@ -55,19 +55,19 @@ class pegununganController extends Controller
                         ->with('success','Product created successfully.');
     }
     //lihat edit
-    public function edit($id)
+    public function edit($id_gunung)
     {
-        $pegunungan = pegunungan::findOrFail($id);
-        return view('pegunungan_setting_edit')->with([
+        $pegunungan = pegunungan::findOrFail($id_gunung);
+        return view('admin.pegunungan_setting_edit')->with([
             'pegunungan' => $pegunungan
         ]);
     }
     //edit data
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_gunung)
     {
-        $pegunungan = pegunungan::findOrFail($id);
+        $item = pegunungan::findOrFail($id_gunung);
 
-        $request->validate([
+        $pegunungan = $request->validate([
             'nama_gunung' => 'required',
             'letak_gunung' => 'required',
             'ketinggian_gunung' => 'required',
@@ -79,26 +79,23 @@ class pegununganController extends Controller
             'level_pendakian' => 'required',
         ]);
 
-        $input = $request->all();
-
         if ($image = $request->file('foto_gunung')) {
             $destinationPath = 'images/';
             $pegununganImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $pegununganImage);
-            $input['foto_gunung'] = "$pegununganImage";
+            $pegunungan['foto_gunung'] = "$pegununganImage";
         } else {
-            unset($input['foto_gunung']);
+            unset($pegunungan['foto_gunung']);
         }
     
-        $pegunungan->update($input);
-
-        return redirect()->route('admin.pegunungan_setting')
+        $item->update($pegunungan);
+        return redirect()->route('pegunungan_setting')
                         ->with('success','Product created successfully.');
     }
     //menghapus data
-    public function destroy($id)
+    public function destroy($id_gunung)
     {
-        $item = pegunungan::findOrFail($id);
+        $item = pegunungan::findOrFail($id_gunung);
         $item->delete();
         return redirect('pegunungan_setting');
     }

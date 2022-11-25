@@ -104,7 +104,7 @@
                <div class="col-md-12">
                 <br>
                   <div class="heading">
-        <form method="POST" action="{{ route('pegunungan_setting_edit_action') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('/pegunungan_setting_edit_action/' . $pegunungan->id_gunung) }}" enctype="multipart/form-data">
         @csrf
             <div class="row">
                <div class="col-md-12">
@@ -176,8 +176,11 @@
                     <label for="foto_gunung" class="col-md-4 col-form-label text-md-end">{{ __('Foto') }}</label>
 
                     <div class="col-md-6">
+                     <strong>Image : </strong>
+                     <div class="mb-2"></div>
                         <input id="foto_gunung" type="file" placeholder ="Foto Gunung" class="form-control @error('foto_gunung') is-invalid @enderror" name="foto_gunung" value="{{ $pegunungan -> foto_gunung }}" required autocomplete="foto_gunung" autofocus>
-
+                        <div class="mb-2"></div>
+                        <img src="/images/{{ $pegunungan->foto_gunung }}" width="300px">
                         @error('foto_gunung')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

@@ -60,8 +60,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/pegunungan_setting_insert', [pegununganController::class, 'insertPegunungan'])->name('pegunungan_setting_insert');
     Route::post('/pegunungan_setting_insert_action', [pegununganController::class, 'store'])->name('pegunungan_setting_insert_action');
 
-    Route::get('/pegunungan_setting_edit/{id}', [pegununganController::class, 'edit'])->name('pegunungan_setting_edit');
-    Route::post('/pegunungan_setting_action/{id}', [pegununganController::class, 'update'])->name('pegunungan_setting_edit_action');
+    Route::get('/pegunungan_setting_edit/{id_gunung}', [pegununganController::class, 'edit'])->name('pegunungan_setting_edit');
+    Route::post('/pegunungan_setting_edit_action/{id_gunung}', [pegununganController::class, 'update'])->name('pegunungan_setting_edit_action');
 
-    Route::get('/pegunungan_setting_delete/{id}', [pegununganController::class, 'destroy'])->name('pegunungan_setting_delete');
+    Route::get('/pegunungan_setting_delete/{id_gunung}', [pegununganController::class, 'destroy'])->name('pegunungan_setting_delete');
 });

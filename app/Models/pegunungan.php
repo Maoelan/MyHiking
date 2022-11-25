@@ -10,8 +10,8 @@ class pegunungan extends Model
     use HasFactory;
 
     protected $table = "pegunungan";
+    protected $primaryKey = 'id_gunung';
     protected $fillable = [
-        'id_gunung',
         'nama_gunung',
         'letak_gunung',
         'ketinggian_gunung',
