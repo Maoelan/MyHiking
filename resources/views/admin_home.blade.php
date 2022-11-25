@@ -80,7 +80,7 @@
                                  <a href="{{ route('admin.home') }}" style="color : white"> {{ Auth::user()->name }}</a>
                               </li>
                               <li>
-                                 <a href="#" style="color : white">Admin Room</a>
+                                 <a href="{{ route('admin') }}" style="color : white">Admin Room</a>
                               </li>
                               <li>
                                  <a href="{{ route('logout') }}">Logout</a>

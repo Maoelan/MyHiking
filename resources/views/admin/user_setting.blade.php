@@ -8,7 +8,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Gunung Bukit</title>
+      <title>MyHiking</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -55,13 +55,16 @@
                                  <a href="{{ route('home') }}">Beranda</a>
                               </li>
                               <li>
-                                 <a href="{{ route('pegunungan_bukit') }}">Pegunungan & Bukit</a>
+                                 <a href="{{ route('user_setting') }}">User</a>
                               </li>
                               <li>
-                                 <a href="{{ route('story') }}">Cerita Komunitas</a>
+                                 <a href="{{ route('story') }}">Pegunungan</a>
                               </li>
                               <li>
-                                 <a href="{{ route('info') }}">Info</a>
+                                 <a href="{{ route('info') }}">Story</a>
+                              </li>
+                              <li>
+                                <a href="{{ route('info') }}">Info</a>
                               </li>
                               @guest
                                  @if (Route::has('login'))
@@ -92,65 +95,48 @@
             </div>
          </div>
          <!-- end header inner -->
-      </header>
-      <!-- end header -->
-      <div class="Marketing-bg">
-   <div class="container">
-      <div class="row">
-         <div class="col-md-12">
-            <div class="Marketingheading">
-               <h5> </h5>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
-
-<main>
-      <!-- section --> 
-      <div class="section layout_padding">
-         <div class="container">
-            
-            <div class="row">
-               <div class="col-md-6">
-                  <img src="images/marketing_img.png" alt="#" />
-               </div>
-               <div class="col-md-6">
-                  <div class="full blog_cont">
-                     <h3>Where can I get some</h3>
-                     <h5>March 19 2019 5 READ</h5>
-                     <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined g to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator..</p>
-                  </div>
-               </div>
-            </div>
-            
-            </div>
-         </div>
-      </div>
-   </main>
+        </header>
       <!-- end section -->
-
       <!-- section --> 
-      <div class="section layout_padding">
-         <div class="container">
-            
-   <div class="row">
-   <div class="col-md-6">
-                  <div class="full blog_cont">
-                     <h3>Where can I get some</h3>
-                     <h5>March 19 2019 5 READ</h5>
-                     <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined g to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator..</p>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <img src="images/marketing_img.png" alt="#" />
-               </div>
-               
-            </div>
-         </div>
-      </div>
-      <!-- end section -->
       
+      <div class="section layout_padding">
+        <div class="container">
+           <div class="row">
+              <div class="col-md-12">
+               <br>
+                 <div class="heading">
+                    <table class="table table-striped">
+                        <thead class="thead-dark" style="font-weight:bold">
+                        <tr>
+                           <td>No</td>
+                            <td>Nama</td>
+                            <td>Email</td>
+                            <td>Password</td>
+                            <td>Role</td>
+                        </tr>
+                        </thead>
+                        @foreach ($data as $user)
+                        <tr>
+                           <td>{{ $user->id }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->password }}</td>
+                            <td>{{ $user->role }}</td>
+                            <td>
+                                <a href="{{ url('/user_setting_edit/' . $user->id) }}" class="btn btn-warning">Edit</a>
+                            </td>
+                            <td>
+                                <a href="{{ url('/user_setting_delete/' . $user->id) }}" class="btn btn-danger">Hapus</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </table>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+      <!-- end section -->
       <!-- footer -->
       <footer>
          <div class="container">

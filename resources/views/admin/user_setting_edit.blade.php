@@ -8,20 +8,20 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Gunung Bukit</title>
+      <title>MyHiking</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
       <!-- bootstrap css -->
-      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="../css/bootstrap.min.css">
       <!-- style css -->
-      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="../css/style.css">
       <!-- Responsive-->
-      <link rel="stylesheet" href="css/responsive.css">
+      <link rel="stylesheet" href="../css/responsive.css">
       <!-- fevicon -->
-      <link rel="icon" href="images/fevicon.png" type="image/gif" />
+      <link rel="icon" href="../images/fevicon.png" type="image/gif" />
       <!-- Scrollbar Custom CSS -->
-      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css">
       <!-- Tweaks for older IEs-->
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -31,7 +31,7 @@
    <body class="main-layout">
       <!-- loader  -->
       <div class="loader_bg">
-         <div class="loader"><img src="images/loading.gif" alt="" /></div>
+         <div class="loader"><img src="../images/loading.gif" alt="" /></div>
       </div>
       <!-- end loader -->
       <!-- header -->
@@ -42,7 +42,7 @@
                <div class="col-lg-3 logo_section">
                   <div class="full">
                      <div class="center-desk">
-                        <div class="logo"> <a href="index.html"><img src="images/myhiking/logo22.png" alt="#"></a> </div>
+                        <div class="logo"> <a href="index.html"><img src="../images/myhiking/logo22.png" alt="#"></a> </div>
                      </div>
                   </div>
                </div>
@@ -55,13 +55,16 @@
                                  <a href="{{ route('home') }}">Beranda</a>
                               </li>
                               <li>
-                                 <a href="{{ route('pegunungan_bukit') }}">Pegunungan & Bukit</a>
+                                 <a href="{{ route('user_setting') }}">User</a>
                               </li>
                               <li>
-                                 <a href="{{ route('story') }}">Cerita Komunitas</a>
+                                 <a href="{{ route('story') }}">Pegunungan</a>
                               </li>
                               <li>
-                                 <a href="{{ route('info') }}">Info</a>
+                                 <a href="{{ route('info') }}">Story</a>
+                              </li>
+                              <li>
+                                <a href="{{ route('info') }}">Info</a>
                               </li>
                               @guest
                                  @if (Route::has('login'))
@@ -92,75 +95,110 @@
             </div>
          </div>
          <!-- end header inner -->
-      </header>
-      <!-- end header -->
-      <div class="Marketing-bg">
-   <div class="container">
-      <div class="row">
-         <div class="col-md-12">
-            <div class="Marketingheading">
-               <h5> </h5>
+        </header>
+      <!-- end section -->
+      <!-- section --> 
+      <div class="section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                <br>
+                  <div class="heading">
+      <form method="POST" action="{{ url('/user_setting_edit_action/' . $data->id) }}" enctype="multipart/form-data">
+        @csrf
+
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="heading">
+                     <h4>Edit <span class="orange_color">User | Role : 0 = user, 1 = admin</span></h4>
+                  </div>
+               </div>
             </div>
-         </div>
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row mb-3">
+                    <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nama') }}</label>
+
+                    <div class="col-md-6">
+                        <input id="name" type="text" placeholder ="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $data -> name }}" required autocomplete="name" autofocus>
+
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
+
+                    <div class="col-md-6">
+                        <input id="email" type="email" placeholder ="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $data -> email }}" required autocomplete="email" autofocus>
+
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+
+                    <div class="col-md-6">
+                        <input id="password" type="password" placeholder ="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ $data -> password }}" required autocomplete="password" autofocus>
+
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
+
+                    <div class="col-md-6">
+                        <input id="role" type="text" placeholder ="role" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ $data -> role }}" required autocomplete="role" autofocus>
+
+                        @error('role')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="row mb-0">
+                  <div class="col-md-8 offset-md-4">
+                      <button type="submit" class="btn btn-primary">
+                          {{ __('SIMPAN') }}
+                      </button>
+                  </div>
+              </div>
+            </div>
+        </div>
+
+      </form>
       </div>
    </div>
 </div>
-
-<main>
-      <!-- section --> 
-      <div class="section layout_padding">
-         <div class="container">
-            
-            <div class="row">
-               <div class="col-md-6">
-                  <img src="images/marketing_img.png" alt="#" />
-               </div>
-               <div class="col-md-6">
-                  <div class="full blog_cont">
-                     <h3>Where can I get some</h3>
-                     <h5>March 19 2019 5 READ</h5>
-                     <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined g to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator..</p>
-                  </div>
-               </div>
-            </div>
-            
-            </div>
-         </div>
-      </div>
-   </main>
+</div>
+</div>
       <!-- end section -->
-
-      <!-- section --> 
-      <div class="section layout_padding">
-         <div class="container">
-            
-   <div class="row">
-   <div class="col-md-6">
-                  <div class="full blog_cont">
-                     <h3>Where can I get some</h3>
-                     <h5>March 19 2019 5 READ</h5>
-                     <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined g to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator..</p>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <img src="images/marketing_img.png" alt="#" />
-               </div>
-               
-            </div>
-         </div>
-      </div>
-      <!-- end section -->
-      
       <!-- footer -->
       <footer>
          <div class="container">
             <div class="row">
                <div class="col-lg-4 col-md-6">
-                  <a href="#"><img src="images/footer_logo.png" alt="#" /></a>
+                  <a href="#"><img src="../images/footer_logo.png" alt="#" /></a>
                   <ul class="contact_information">
-                     <li><span><img src="images/location_icon.png" alt="#" /></span><span class="text_cont">London 145<br>United Kingdom</span></li>
-                     <li><span><img src="images/phone_icon.png" alt="#" /></span><span class="text_cont">987 654 3210<br>987 654 3210</span></li>
-                     <li><span><img src="images/mail_icon.png" alt="#" /></span><span class="text_cont">demo@gmail.com<br>support@gmail.com</span></li>
+                     <li><span><img src="../images/location_icon.png" alt="#" /></span><span class="text_cont">London 145<br>United Kingdom</span></li>
+                     <li><span><img src="../images/phone_icon.png" alt="#" /></span><span class="text_cont">987 654 3210<br>987 654 3210</span></li>
+                     <li><span><img src="../images/mail_icon.png" alt="#" /></span><span class="text_cont">demo@gmail.com<br>support@gmail.com</span></li>
                   </ul>
                   <ul class="social_icon">
                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -187,10 +225,10 @@
                   <div class="footer_links">
                      <h3>Instagram</h3>
                      <ol>
-                        <li><img class="img-responsive" src="images/footer_blog.png" alt="#" /></li>
-                        <li><img class="img-responsive" src="images/footer_blog.png" alt="#" /></li>
-                        <li><img class="img-responsive" src="images/footer_blog.png" alt="#" /></li>
-                        <li><img class="img-responsive" src="images/footer_blog.png" alt="#" /></li>
+                        <li><img class="img-responsive" src="../images/footer_blog.png" alt="#" /></li>
+                        <li><img class="img-responsive" src="../images/footer_blog.png" alt="#" /></li>
+                        <li><img class="img-responsive" src="../images/footer_blog.png" alt="#" /></li>
+                        <li><img class="img-responsive" src="../images/footer_blog.png" alt="#" /></li>
                      </ol>
                   </div>
                </div>
@@ -234,13 +272,13 @@
       </div>
       <!-- end footer -->
       <!-- Javascript files-->
-      <script src="js/jquery.min.js"></script>
-      <script src="js/popper.min.js"></script>
-      <script src="js/bootstrap.bundle.min.js"></script>
-      <script src="js/jquery-3.0.0.min.js"></script>
-      <script src="js/plugin.js"></script>
+      <script src="../js/jquery.min.js"></script>
+      <script src="../js/popper.min.js"></script>
+      <script src="../js/bootstrap.bundle.min.js"></script>
+      <script src="../js/jquery-3.0.0.min.js"></script>
+      <script src="../js/plugin.js"></script>
       <!-- Scrollbar Js Files -->
-      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-      <script src="js/custom.js"></script>
+      <script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="../js/custom.js"></script>
    </body>
 </html>
