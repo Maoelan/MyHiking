@@ -100,4 +100,26 @@ class pegununganController extends Controller
         return redirect('pegunungan_setting');
     }
 
+
+
+
+
+
+    //user access
+    public function lihatPegununganUser()
+    {
+        $pegunungan = pegunungan::all();
+        return view('gunung_bukit')->with([
+            'pegunungan' => $pegunungan
+        ]);
+    }
+    public function indexUser()
+    {
+        //
+        return view('gunung_bukit');
+    }
+
+
+
+
 }

@@ -51,11 +51,11 @@
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                              <li class="active">
+                              <li>
                                  <a href="{{ route('home') }}">Beranda</a>
                               </li>
                               <li>
-                                 <a href="{{ route('pegunungan_bukit') }}">Pegunungan</a>
+                                 <a href="{{ route('pegunungan') }}">Pegunungan</a>
                               </li>
                               <li>
                                  <a href="{{ route('story') }}">Cerita Komunitas</a>

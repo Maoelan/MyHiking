@@ -51,39 +51,39 @@
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                            <li class="active">
-                                <a href="{{ route('home') }}">Beranda</a>
-                             </li>
-                             <li>
-                                <a href="{{ route('pegunungan_bukit') }}">Pegunungan & Bukit</a>
-                             </li>
-                             <li>
-                                <a href="{{ route('story') }}">Cerita Komunitas</a>
-                             </li>
-                             <li>
-                                <a href="{{ route('info') }}">Info</a>
-                             </li>
-                             @guest
-                                @if (Route::has('login'))
-                                <li>
-                                   <a href="{{ route('login') }}">Login</a>
-                                </li>
-                                @endif
+                              <li>
+                                 <a href="{{ route('home') }}">Beranda</a>
+                              </li>
+                              <li>
+                                 <a href="{{ route('pegunungan') }}">Pegunungan</a>
+                              </li>
+                              <li>
+                                 <a href="{{ route('story') }}">Cerita Komunitas</a>
+                              </li>
+                              <li>
+                                 <a href="{{ route('info') }}">Info</a>
+                              </li>
+                              @guest
+                                 @if (Route::has('login'))
+                                 <li>
+                                    <a href="{{ route('login') }}">Login</a>
+                                 </li>
+                                 @endif
 
-                                @if (Route::has('register'))
-                                <li>
-                                   <a href="{{ route('register') }}">Register</a>
-                                </li>
-                                @endif
-                             @else
-                             <li>
-                                <a href="{{ route('home') }}" style="color : white"> {{ Auth::user()->name }}</a>
-                             </li>
-                             <li>
-                                <a href="{{ route('logout') }}">Logout</a>
-                                @csrf
-                             </li>
-                             @endguest
+                                 @if (Route::has('register'))
+                                 <li>
+                                    <a href="{{ route('register') }}">Register</a>
+                                 </li>
+                                 @endif
+                              @else
+                              <li>
+                                 <a href="{{ route('home') }}" style="color : white"> {{ Auth::user()->name }}</a>
+                              </li>
+                              <li>
+                                 <a href="{{ route('logout') }}">Logout</a>
+                                 @csrf
+                              </li>
+                              @endguest
                            </ul>
                         </nav>
                      </div>

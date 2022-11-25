@@ -76,4 +76,23 @@ class info_setController extends Controller
         $item->delete();
         return redirect('info_setting');
     }
+
+
+    //user see
+
+
+    public function indexUser()
+    {
+        //
+        return view('info');
+    }
+
+    //lihat
+    public function lihatInfoUser()
+    {
+        $info = info::all();
+        return view('info')->with([
+            'info' => $info
+        ]);
+    }
 }

@@ -50,7 +50,7 @@
                   <div class="menu-area">
                      <div class="limit-box">
                         <nav class="main-menu">
-                           <ul class="menu-area-main">
+                           <ul>
                               <li class="active">
                                  <a href="{{ route('home') }}">Beranda</a>
                               </li>
@@ -61,10 +61,10 @@
                                  <a href="{{ route('pegunungan_setting') }}">Pegunungan</a>
                               </li>
                               <li>
-                                 <a href="{{ route('info') }}">Story</a>
+                                 <a href="{{ route('story_setting') }}">Story</a>
                               </li>
                               <li>
-                                <a href="{{ route('info') }}">Info</a>
+                                 <a href="{{ route('info_setting') }}">Info</a>
                               </li>
                               @guest
                                  @if (Route::has('login'))
