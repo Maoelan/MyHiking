@@ -8,7 +8,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Gunung Bukit</title>
+      <title>Gunung</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -107,19 +107,24 @@
 </div>
 
 <main>
+   @foreach ($pegunungan as $gunung)
       <!-- section --> 
       <div class="section layout_padding">
          <div class="container">
             
             <div class="row">
                <div class="col-md-6">
-                  <img src="images/marketing_img.png" alt="#" />
+                  <img src="/images/{{ $gunung->foto_gunung }}" alt="#" />
                </div>
                <div class="col-md-6">
                   <div class="full blog_cont">
-                     <h3>Where can I get some</h3>
-                     <h5>March 19 2019 5 READ</h5>
-                     <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined g to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator..</p>
+                     <h3>{{ $gunung->nama_gunung }}</h3>
+                     <h5>Level           : {{ $gunung->level_pendakian }}</h5>
+                     <p> Letak           : {{ $gunung->letak_gunung }}</p>
+                     <p> Jenis           : {{ $gunung->jenis_gunung }}</p>
+                     <p> Ketinggian      : {{ $gunung->ketinggian_gunung }}</p>
+                     <p> Jalur Pendakian : {{ $gunung->jalur_pendakian  }}</p>
+                     <p> Deskripsi       : {{ $gunung->deskripsi }}</p>
                   </div>
                </div>
             </div>
@@ -127,98 +132,21 @@
             </div>
          </div>
       </div>
+      @endforeach
    </main>
       <!-- end section -->
 
       <!-- section --> 
-      <div class="section layout_padding">
-         <div class="container">
-            
-   <div class="row">
-   <div class="col-md-6">
-                  <div class="full blog_cont">
-                     <h3>Where can I get some</h3>
-                     <h5>March 19 2019 5 READ</h5>
-                     <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined g to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator..</p>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <img src="images/marketing_img.png" alt="#" />
-               </div>
-               
-            </div>
-         </div>
-      </div>
-      <!-- end section -->
-      
-      <!-- footer -->
       <footer>
          <div class="container">
             <div class="row">
                <div class="col-lg-4 col-md-6">
-                  <a href="#"><img src="images/footer_logo.png" alt="#" /></a>
+                  <a href="#"><img src="images/myhiking/logo22.png" alt="#" /></a>
                   <ul class="contact_information">
                      <li><span><img src="images/location_icon.png" alt="#" /></span><span class="text_cont">London 145<br>United Kingdom</span></li>
                      <li><span><img src="images/phone_icon.png" alt="#" /></span><span class="text_cont">987 654 3210<br>987 654 3210</span></li>
                      <li><span><img src="images/mail_icon.png" alt="#" /></span><span class="text_cont">demo@gmail.com<br>support@gmail.com</span></li>
                   </ul>
-                  <ul class="social_icon">
-                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                  </ul>
-               </div>
-               <div class="col-lg-2 col-md-6">
-                  <div class="footer_links">
-                     <h3>Quick link</h3>
-                     <ul>
-                        <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Home</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Features</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Evens</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Markrting</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Blog</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Testimonial</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Contact</a></li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="col-lg-3 col-md-6">
-                  <div class="footer_links">
-                     <h3>Instagram</h3>
-                     <ol>
-                        <li><img class="img-responsive" src="images/footer_blog.png" alt="#" /></li>
-                        <li><img class="img-responsive" src="images/footer_blog.png" alt="#" /></li>
-                        <li><img class="img-responsive" src="images/footer_blog.png" alt="#" /></li>
-                        <li><img class="img-responsive" src="images/footer_blog.png" alt="#" /></li>
-                     </ol>
-                  </div>
-               </div>
-               <div class="col-lg-3 col-md-6">
-                  <div class="footer_links">
-                     <h3>Contact us</h3>
-                     <form action="index.html">
-                        <fieldset>
-                           <div class="field">
-                              <input type="text" name="name" placeholder="Your Name" required="" />
-                           </div>
-                           <div class="field">
-                              <input type="email" name="email" placeholder="Email" required="" />
-                           </div>
-                           <div class="field">
-                              <input type="text" name="subject" placeholder="Subject" required="" />
-                           </div>
-                           <div class="field">
-                              <textarea placeholder="Message"></textarea>
-                           </div>
-                           <div class="field">
-                              <div class="center">
-                                 <button class="reply_bt">Send</button>
-                              </div>
-                           </div>
-                        </fieldset>
-                     </form>
-                  </div>
                </div>
             </div>
          </div>
