@@ -58,13 +58,13 @@
                                  <a href="{{ route('user_setting') }}">User</a>
                               </li>
                               <li>
-                                 <a href="{{ route('story') }}">Pegunungan</a>
+                                 <a href="{{ route('pegunungan_setting') }}">Pegunungan</a>
                               </li>
                               <li>
                                  <a href="{{ route('info') }}">Story</a>
                               </li>
                               <li>
-                                <a href="{{ route('info') }}">Info</a>
+                                 <a href="{{ route('info') }}">Info</a>
                               </li>
                               @guest
                                  @if (Route::has('login'))

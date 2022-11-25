@@ -105,6 +105,14 @@
               <div class="col-md-12">
                <br>
                  <div class="heading">
+                  <div class="row mb-0">
+                            <div class="col-md-8 offset-md">
+                                <a  class="btn btn-primary" href="{{ route('pegunungan_setting_insert') }}">
+                                    {{ __('TAMBAH') }}
+                                </a>
+                              </div>
+                           </div>
+                           <br>
                     <table class="table table-striped">
                         <thead class="thead-dark" style="font-weight:bold">
                         <tr>
@@ -121,20 +129,20 @@
                         </thead>
                         @foreach ($pegunungan as $gunung)
                         <tr>
-                            <td>{{ $gunung->id }}</td>
-                            <td>{{ $gunung->nama_gununug }}</td>
+                            <td>{{ $gunung->id_gunung }}</td>
+                            <td>{{ $gunung->nama_gunung }}</td>
                             <td>{{ $gunung->letak_gunung }}</td>
                             <td>{{ $gunung->jenis_gunung }}</td>
                             <td>{{ $gunung->ketinggian_gunung }}</td>
-                            <td><img src="/images/ {{ $gunung->foto_gunung }}" width="100px"></td>
+                            <td><img src="/images/{{ $gunung->foto_gunung }}" width="100px"></td>
                             <td>{{ $gunung->deskripsi }}</td>
                             <td>{{ $gunung->jalur_pendakian }}</td>
                             <td>{{ $gunung->level_pendakian }}</td>
                             <td>
-                                <a href="{{ url('/pegunungan_setting_edit/' . $user->id) }}" class="btn btn-warning">Edit</a>
+                                <a href="{{ url('/pegunungan_setting_edit/' . $gunung->id_gunung) }}" class="btn btn-warning">Edit</a>
                             </td>
                             <td>
-                                <a href="{{ url('/pegunungan_setting_delete/' . $user->id) }}" class="btn btn-danger">Hapus</a>
+                                <a href="{{ url('/pegunungan_setting_delete/' . $gunung->id_gunung) }}" class="btn btn-danger">Hapus</a>
                             </td>
                         </tr>
                         @endforeach

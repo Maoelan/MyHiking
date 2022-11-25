@@ -16,10 +16,14 @@ class pegununganController extends Controller
     //lihat
     public function lihatPegunungan()
     {
-        $data = pegunungan::all();
-        return view('admin.user_setting')->with([
-            'data' => $data
+        $pegunungan = pegunungan::all();
+        return view('admin.pegunungan_setting')->with([
+            'pegunungan' => $pegunungan
         ]);
+    }
+    public function insertPegunungan()
+    {
+        return view('admin.pegunungan_setting_insert');
     }
     //insert data
     public function store(Request $request)
@@ -47,15 +51,15 @@ class pegununganController extends Controller
     
         pegunungan::create($input);
 
-        return redirect()->route('admin.pegunungan_setting')
+        return redirect()->route('pegunungan_setting')
                         ->with('success','Product created successfully.');
     }
     //lihat edit
     public function edit($id)
     {
-        $data = pegunungan::findOrFail($id);
-        return view('admin.pegunungan_setting_edit')->with([
-            'data' => $data
+        $pegunungan = pegunungan::findOrFail($id);
+        return view('pegunungan_setting_edit')->with([
+            'pegunungan' => $pegunungan
         ]);
     }
     //edit data
