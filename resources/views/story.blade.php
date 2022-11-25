@@ -95,7 +95,15 @@
       </header>
       <!-- end header -->
       <!-- revolution slider -->
-      
+
+      <div class="row mb-0">
+         <div class="col-md-8 offset-md">
+             <a  class="btn btn-primary" href="{{ route('story_insert') }}">
+                 {{ __('TAMBAH') }}
+             </a>
+           </div>
+        </div>
+
 <div class="Blog-bg">
    <div class="container">
       <div class="row">

@@ -51,42 +51,39 @@
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                              <li class="active">
-                                 <a href="{{ route('home') }}">Beranda</a>
-                              </li>
-                              <li>
-                                 <a href="{{ route('user_setting') }}">User</a>
-                              </li>
-                              <li>
-                                 <a href="{{ route('pegunungan_setting') }}">Pegunungan</a>
-                              </li>
-                              <li>
-                                 <a href="{{ route('info') }}">Story</a>
-                              </li>
-                              <li>
+                            <li class="active">
+                                <a href="{{ route('home') }}">Beranda</a>
+                             </li>
+                             <li>
+                                <a href="{{ route('pegunungan_bukit') }}">Pegunungan & Bukit</a>
+                             </li>
+                             <li>
+                                <a href="{{ route('story') }}">Cerita Komunitas</a>
+                             </li>
+                             <li>
                                 <a href="{{ route('info') }}">Info</a>
-                              </li>
-                              @guest
-                                 @if (Route::has('login'))
-                                 <li>
-                                    <a href="{{ route('login') }}">Login</a>
-                                 </li>
-                                 @endif
+                             </li>
+                             @guest
+                                @if (Route::has('login'))
+                                <li>
+                                   <a href="{{ route('login') }}">Login</a>
+                                </li>
+                                @endif
 
-                                 @if (Route::has('register'))
-                                 <li>
-                                    <a href="{{ route('register') }}">Register</a>
-                                 </li>
-                                 @endif
-                              @else
-                              <li>
-                                 <a href="{{ route('home') }}" style="color : white"> {{ Auth::user()->name }}</a>
-                              </li>
-                              <li>
-                                 <a href="{{ route('logout') }}">Logout</a>
-                                 @csrf
-                              </li>
-                              @endguest
+                                @if (Route::has('register'))
+                                <li>
+                                   <a href="{{ route('register') }}">Register</a>
+                                </li>
+                                @endif
+                             @else
+                             <li>
+                                <a href="{{ route('home') }}" style="color : white"> {{ Auth::user()->name }}</a>
+                             </li>
+                             <li>
+                                <a href="{{ route('logout') }}">Logout</a>
+                                @csrf
+                             </li>
+                             @endguest
                            </ul>
                         </nav>
                      </div>
@@ -104,100 +101,97 @@
                <div class="col-md-12">
                 <br>
                   <div class="heading">
-        <form method="POST" action="{{ url('/story_setting_edit_action/' . $story->id_story) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('story_insert_action') }}" enctype="multipart/form-data">
         @csrf
             <div class="row">
                <div class="col-md-12">
                   <div class="heading">
-                     <h4>Edit Data <span class="orange_color">Story</span></h4>
+                     <h4>Masukkan <span class="orange_color">Storymu</span></h4>
                   </div>
                </div>
             </div>
-        <div class="card">
-            <div class="card-body">
-
-                <div class="row mb-3">
-                    <label for="judul_story" class="col-md-4 col-form-label text-md-end">{{ __('Judul') }}</label>
-
-                    <div class="col-md-6">
-                        <input id="judul_story" type="text" placeholder ="judul_story" class="form-control @error('judul_story') is-invalid @enderror" name="judul_story" value="{{ $story -> judul_story }}" required autocomplete="judul_story" autofocus>
-
-                        @error('judul_story')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+            <div class="card">
+                <div class="card-body">
+    
+                    <div class="row mb-3">
+                        <label for="judul_story" class="col-md-4 col-form-label text-md-end">{{ __('Judul') }}</label>
+    
+                        <div class="col-md-6">
+                            <input id="judul_story" type="text" placeholder ="judul_story" class="form-control @error('judul_story') is-invalid @enderror" name="judul_story" value="" required autocomplete="judul_story" autofocus>
+    
+                            @error('judul_story')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
-                </div>
-
-                <div class="row mb-3">
-                    <label for="nama" class="col-md-4 col-form-label text-md-end">{{ __('Nama') }}</label>
-
-                    <div class="col-md-6">
-                        <input id="nama" type="text" placeholder ="nama" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ $story -> nama }}" required autocomplete="nama" autofocus>
-
-                        @error('nama')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+    
+                    <div class="row mb-3">
+                        <label for="nama" class="col-md-4 col-form-label text-md-end">{{ __('Nama') }}</label>
+    
+                        <div class="col-md-6">
+                            <input id="nama" type="text" placeholder ="nama" class="form-control @error('nama') is-invalid @enderror" name="nama" value="" required autocomplete="nama" autofocus>
+    
+                            @error('nama')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
-                </div>
-
-                <div class="row mb-3">
-                    <label for="tanggal_post" class="col-md-4 col-form-label text-md-end">{{ __('Tanggal') }}</label>
-
-                    <div class="col-md-6">
-                        <input id="tanggal_post" type="date" placeholder ="tanggal_post" class="form-control @error('tanggal_post') is-invalid @enderror" name="tanggal_post" value="{{ $story -> tanggal_post }}" required autocomplete="tanggal_post" autofocus>
-
-                        @error('tanggal_post')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+    
+                    <div class="row mb-3">
+                        <label for="tanggal_post" class="col-md-4 col-form-label text-md-end">{{ __('Tanggal') }}</label>
+    
+                        <div class="col-md-6">
+                            <input id="tanggal_post" type="date" placeholder ="tanggal_post" class="form-control @error('tanggal_post') is-invalid @enderror" name="tanggal_post" value="" required autocomplete="tanggal_post" autofocus>
+    
+                            @error('tanggal_post')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
-                </div>
-
-                <div class="row mb-3">
-                    <label for="foto_story" class="col-md-4 col-form-label text-md-end">{{ __('Foto') }}</label>
-
-                    <div class="col-md-6">
-                     <strong>Image : </strong>
-                     <div class="mb-2"></div>
-                        <input id="foto_story" type="file" placeholder ="Foto Story" class="form-control @error('foto_story') is-invalid @enderror" name="foto_story" value="{{ $story -> foto_story }}" required autocomplete="foto_story" autofocus>
-                        <div class="mb-2"></div>
-                        <img src="/images/{{ $story->foto_story }}" width="300px">
-                        @error('foto_gunung')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+    
+                    <div class="row mb-3">
+                        <label for="foto_story" class="col-md-4 col-form-label text-md-end">{{ __('Foto') }}</label>
+    
+                        <div class="col-md-6">
+                            <input id="foto_story" type="file" placeholder ="Foto Story" class="form-control @error('foto_story') is-invalid @enderror" name="foto_story" value="" required autocomplete="foto_story" autofocus>
+    
+                            @error('foto_story')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
-                </div>
-
-                <div class="row mb-3">
-                    <label for="post_story" class="col-md-4 col-form-label text-md-end">{{ __('Story') }}</label>
-
-                    <div class="col-md-6">
-                        <textarea id="post_story" type="text" placeholder ="Story" class="form-control @error('post_story') is-invalid @enderror" name="post_story" value="" required autocomplete="post_story" autofocus>{{ $story -> post_story }}</textarea>
-
-                        @error('post_story')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+    
+                    <div class="row mb-3">
+                        <label for="post_story" class="col-md-4 col-form-label text-md-end"></label>
+    
+                        <div class="col-md-6">
+                            <textarea id="post_story" type="text" placeholder ="Story" class="form-control @error('post_story') is-invalid @enderror" name="post_story" value="" required autocomplete="post_story" autofocus></textarea>
+    
+                            @error('post_story')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
-                </div>
-                
-                <div class="row mb-0">
-                  <div class="col-md-8 offset-md-4">
-                      <button type="submit" class="btn btn-primary">
-                          {{ __('SIMPAN') }}
-                      </button>
+                    
+                    <div class="row mb-0">
+                      <div class="col-md-8 offset-md-4">
+                          <button type="submit" class="btn btn-primary">
+                              {{ __('SIMPAN') }}
+                          </button>
+                      </div>
                   </div>
-              </div>
+                </div>
             </div>
-        </div>
       </form>
       </div>
    </div>

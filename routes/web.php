@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\pegununganController;
 use App\Http\Controllers\info_setController;
+use App\Http\Controllers\story_setController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,11 +28,22 @@ use App\Http\Controllers\info_setController;
 Auth::routes();
 
 Route::get('/pegunungan_bukit', [pegunungan_bukitController::class, 'index'])->name('pegunungan_bukit');
-Route::get('/story', [storyController::class, 'index'])->name('story');
+//Route::get('/story', [storyController::class, 'index'])->name('story');
 Route::get('/info', [infoController::class, 'index'])->name('info');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//user story
+
+Route::get('/story', [story_setController::class, 'indexUser'])->name('story');
+Route::get('/story', [story_setController::class, 'lihatStoryUser'])->name('story');
+
+Route::get('/story_insert', [story_setController::class, 'insertStoryUser'])->name('story_insert');
+Route::post('/story_insert_action', [story_setController::class, 'storeUser'])->name('story_insert_action');
+
+
 
 Route::get('/logout', function () {
     \Auth::logout();
@@ -80,4 +92,17 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::post('/info_setting_edit_action/{id_info}', [info_setController::class, 'update'])->name('info_setting_edit_action');
 
     Route::get('/info_setting_delete/{id_info}', [info_setController::class, 'destroy'])->name('info_setting_delete');
+
+    //story
+
+    Route::get('/story_setting', [story_setController::class, 'index'])->name('story_setting');
+    Route::get('/story_setting', [story_setController::class, 'lihatStory'])->name('story_setting');
+
+    Route::get('/story_setting_insert', [story_setController::class, 'insertStory'])->name('story_setting_insert');
+    Route::post('/story_setting_insert_action', [story_setController::class, 'store'])->name('story_setting_insert_action');
+
+    Route::get('/story_setting_edit/{id_story}', [story_setController::class, 'edit'])->name('story_setting_edit');
+    Route::post('/story_setting_edit_action/{id_story}', [story_setController::class, 'update'])->name('story_setting_edit_action');
+
+    Route::get('/story_setting_delete/{id_story}', [story_setController::class, 'destroy'])->name('story_setting_delete');
 });
