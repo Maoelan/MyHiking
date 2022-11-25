@@ -80,7 +80,7 @@
                                  @endif
                               @else
                               <li>
-                                 <a href="{{ route('home') }}" style="color : white"> {{ Auth::user()->name }}</a>
+                                 <a href="{{ route('home') }}"> {{ Auth::user()->name }}</a>
                               </li>
                               <li>
                                  <a href="{{ route('logout') }}">Logout</a>

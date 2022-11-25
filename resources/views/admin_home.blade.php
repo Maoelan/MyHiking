@@ -77,10 +77,10 @@
                                  @endif
                               @else
                               <li>
-                                 <a href="{{ route('admin.home') }}" style="color : white"> {{ Auth::user()->name }}</a>
+                                 <a href="{{ route('admin.home') }}"> {{ Auth::user()->name }}</a>
                               </li>
                               <li>
-                                 <a href="{{ route('admin') }}" style="color : white">Admin Room</a>
+                                 <a href="{{ route('admin') }}">Admin Room</a>
                               </li>
                               <li>
                                  <a href="{{ route('logout') }}">Logout</a>
