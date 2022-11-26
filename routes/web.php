@@ -40,8 +40,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/story', [story_setController::class, 'indexUser'])->name('story');
 Route::get('/story', [story_setController::class, 'lihatStoryUser'])->name('story');
 
-Route::get('/story_insert', [story_setController::class, 'insertStoryUser'])->name('story_insert');
-Route::post('/story_insert_action', [story_setController::class, 'storeUser'])->name('story_insert_action');
+//Route::get('/story_insert', [story_setController::class, 'insertStoryUser'])->name('story_insert');
+//Route::post('/story_insert_action', [story_setController::class, 'storeUser'])->name('story_insert_action');
 
 //user gunung
 
@@ -58,6 +58,11 @@ Route::get('/info', [info_setController::class, 'lihatInfoUser'])->name('info');
 Route::get('/logout', function () {
     \Auth::logout();
     return redirect('/home');
+});
+
+Route::middleware(['auth', 'user-access:user'])->group(function () {
+    Route::get('/story_insert', [story_setController::class, 'insertStoryUser'])->name('story_insert');
+    Route::post('/story_insert_action', [story_setController::class, 'storeUser'])->name('story_insert_action');
 });
 
 
